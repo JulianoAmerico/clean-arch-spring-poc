@@ -6,6 +6,7 @@ import com.juliano.cleanarchspringpoc.gateway.exception.FindPersonByIdDatabaseGa
 import com.juliano.cleanarchspringpoc.usecase.exception.FindPersonByPhoneNumberUseCaseException;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,10 @@ public class FindPersonByPhoneNumberUseCase {
     public Optional<Person> execute(final String phoneNumber) throws FindPersonByPhoneNumberUseCaseException {
 
         try {
+
+            if(Objects.isNull(phoneNumber)) {
+                throw new FindPersonByPhoneNumberUseCaseException("Error when try to find person by phone number");
+            }
 
             return findPersonByPhoneNumberGateway.execute(phoneNumber);
 

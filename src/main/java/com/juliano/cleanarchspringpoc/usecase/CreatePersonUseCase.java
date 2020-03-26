@@ -27,6 +27,10 @@ public class CreatePersonUseCase {
 
         try {
 
+            if(!person.isValidToCreate()) {
+                throw new CreatePersonUseCaseException("Error when try to create person, invalid data of person");
+            }
+
             final Optional<Person> personOptional = findPersonByPhoneNumberUseCase.execute(person.getPhoneNumber());
 
             if (personOptional.isPresent()) {
