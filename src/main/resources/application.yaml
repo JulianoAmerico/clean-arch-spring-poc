@@ -1,0 +1,30 @@
+server.servlet.context-path: /poc
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/poc_postgres
+    username: poc_postgres
+    password: poc_postgres
+    schema-username: poc_postgres
+    schema-password: poc_postgres
+    driver-class-name: org.postgresql.Driver
+    test-while-idle: true
+    validation-query: SELECT 1
+    initialization-mode: always
+    hikari:
+      connectionTimeout: 30000
+      minimumIdle: 2
+      maximumPoolSize: 2
+      idleTimeout: 30000
+      maxLifetime: 2
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      javax:
+        persistence:
+          create-database-schemas: true
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
