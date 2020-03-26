@@ -1,6 +1,6 @@
 package com.juliano.cleanarchspringpoc.usecase.exception;
 
-public class CreatePersonUseCaseException extends Exception {
+public class CreatePersonUseCaseException extends UseCaseException {
 
     private static final long serialVersionUID = 1L;
 

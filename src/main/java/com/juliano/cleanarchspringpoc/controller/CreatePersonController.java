@@ -7,6 +7,7 @@ import com.juliano.cleanarchspringpoc.controller.translator.CreatePersonRequestT
 import com.juliano.cleanarchspringpoc.controller.translator.PersonToCreatePersonResponseTranslator;
 import com.juliano.cleanarchspringpoc.domain.Person;
 import com.juliano.cleanarchspringpoc.usecase.CreatePersonUseCase;
+import com.juliano.cleanarchspringpoc.usecase.exception.UseCaseException;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -21,7 +22,7 @@ public class CreatePersonController implements CreatePersonApi {
     }
 
     @Override
-    public CreatePersonResponse execute(@Valid CreatePersonRequest request) throws Exception {
+    public CreatePersonResponse execute(@Valid CreatePersonRequest request) throws UseCaseException {
 
         final Person person = CreatePersonRequestToPersonTranslator.execute(request);
 

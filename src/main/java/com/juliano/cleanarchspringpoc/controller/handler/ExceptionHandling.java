@@ -1,6 +1,6 @@
 package com.juliano.cleanarchspringpoc.controller.handler;
 
-import com.juliano.cleanarchspringpoc.usecase.exception.CreatePersonUseCaseException;
+import com.juliano.cleanarchspringpoc.usecase.exception.UseCaseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionHandling {
 
-    @ExceptionHandler({CreatePersonUseCaseException.class})
+    @ExceptionHandler({UseCaseException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse createPersonUseCaseException(final CreatePersonUseCaseException e) {
+    public ErrorResponse useCaseException(final UseCaseException e) {
 
         return ErrorResponse.builder()
                 .message(e.getMessage())
